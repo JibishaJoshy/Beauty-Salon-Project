@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Edit Add Category</h4><br>
+                  <p class="card-description">
+                    Please Edit The Add Category...!
+                  </p><br>
+                  <form class="forms-sample" method="post" action="{% url 'update_category' Categoryid=categ.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Category Name" name="cg_name" value="{{categ.Category_Name}}">
+                    </div>
+                     <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4"  name="description">{{categ.Description}}</textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputName1">Image</label>
+                        <img src="{{categ.Category_Image.url}}" >
+                      <input type="file" class="form-control" name="c_image">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+
+
+
+
+
+
+</body>
+</html>
+{% endblock %}

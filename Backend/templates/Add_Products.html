@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="card-body">
+                    <h4 class="card-title">Add Products</h4><br>
+                    <p class="card-description"> Please Add The Products...! </p><br>
+                    <form class="forms-sample" method="post" action="{% url 'savedata_Products' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+                      <label for="exampleInputName1">Select Category</label>
+                      <select class="form-control" name="sel_category">
+                          <option>select</option>
+                          {% for d in categ %}
+                          <option>{{d.Category_Name}}</option>
+                          {% endfor %}
+                      </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputName1">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" name="pr_name">
+                      </div>
+                       <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input type="number" min="1" class="form-control" id="exampleInputName1" placeholder="Price" name="price">
+                      </div>
+                       <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="description"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputName1">Upload Product Image</label>
+                        <input type="file" class="form-control" id="exampleInputName1" placeholder="Upload Image" name="pr_image">
+                      </div>
+
+
+<!--                      <div class="form-group">-->
+<!--                        <label>File upload</label>-->
+<!--                        <input type="file" name="img[]" class="file-upload-default">-->
+<!--                        <div class="input-group col-xs-12">-->
+<!--                          <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">-->
+<!--                          <span class="input-group-append">-->
+<!--                            <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                          </span>-->
+<!--                        </div>-->
+<!--                      </div>-->
+
+
+                      <button type="submit" class="btn btn-primary me-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Added Product Details</h4>
+                  <p class="card-description">
+                     <code></code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Selected Category</th>
+                          <th>Product Name</th>
+                          <th>Price</th>
+                          <th>Description</th>
+                          <th>Image</th>
+
+                        </tr>
+                      </thead>
+                        {% for i in prod %}
+                      <tbody>
+                        <tr>
+                          <td>{{i.Select_Category}}</td>
+                          <td>{{i.Product_Name}}</td>
+                          <td>{{i.Price }}</td>
+                          <td>{{i.Description}}</td>
+                          <td>
+                              <img src={{i.Product_Image.url}} style="height:100px;width:80px;" >
+                          </td>
+                           <td>
+                              <a href="{% url 'edit_products' Productid=i.id %}">
+                                 <button class="badge badge-warning">Edit</button>
+                              </a>
+                          </td>
+                          <td>
+                              <a href="">
+                                 <button class="badge badge-danger">Delete</button>
+                              </a>
+
+                          </td>
+
+
+                        </tr>
+                        {% empty end prod %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</html>
+{% endblock %}
